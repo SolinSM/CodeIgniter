@@ -37,9 +37,9 @@ class CI_Session_app_driver extends CI_Session_driver implements SessionHandlerI
                  */
                 $result_auth = check_auth();                
                 $this->_token = $result_auth['token'];
-//                $session_id = $result_auth['session_id'];
+                $session_id = $result_auth['session_id'];
 
-//                $this->_session_id = $session_id;
+                $this->_session_id = $session_id;
                 unset($this->_config['cookie_name']);  
 
                 // this fixed another issue in code igniter by kill duplicate & null data ==> user=0
@@ -98,7 +98,7 @@ class CI_Session_app_driver extends CI_Session_driver implements SessionHandlerI
     public function read($session_id) {
         
         // update session to be same to that store in DB for the user
-//        $session_id = ($this->_session_id == '') ? $session_id : $this->_session_id;
+        $session_id = ($this->_session_id == '') ? $session_id : $this->_session_id;
         
         // Prevent previous QB calls from messing with our queries
         $this->main_db->reset_query();
@@ -134,7 +134,7 @@ class CI_Session_app_driver extends CI_Session_driver implements SessionHandlerI
     public function write($session_id, $session_data) {
         
         // update session to be same to that store in DB for the user
-//        $session_id = ($this->_session_id == '') ? $session_id : $this->_session_id;
+        $session_id = ($this->_session_id == '') ? $session_id : $this->_session_id;
         
         $token = isset($_SESSION['token']) ? $_SESSION['token'] : '';
       
@@ -188,7 +188,7 @@ class CI_Session_app_driver extends CI_Session_driver implements SessionHandlerI
      */
     public function destroy($session_id) {
         // update session to be same to that store in DB for the user
-//        $session_id = ($this->_session_id == '') ? $session_id : $this->_session_id;
+        $session_id = ($this->_session_id == '') ? $session_id : $this->_session_id;
         
         // Prevent previous QB calls from messing with our queries
         $this->main_db->reset_query();
